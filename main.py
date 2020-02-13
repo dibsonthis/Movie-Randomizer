@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request
 from config import Config
-import netflix_randomizer
+import movie_randomizer
 
 app = Flask(__name__)
 app.config.from_object(Config)
