@@ -11,13 +11,13 @@ def home():
     if request.method == 'POST':
         genre = request.form.get('genres')
         print(genre)
-        movie = netflix_randomizer.randomize(genre)
+        movie = movie_randomizer.randomize(genre)
         movie_title = movie['title']
         movie_desc = movie['description']
         movie_img = movie['img']
 
     else:
-        movie = netflix_randomizer.randomize('children')
+        movie = movie_randomizer.randomize('all')
         movie_title = movie['title']
         movie_desc = movie['description']
         movie_img = movie['img']

@@ -3,10 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import random
 
-# genres = ['action-and-adventure', 'animation', 'anime', 'biography', 'children', 'comedy', 'crime', 'cult', 'documentary', 'drama', 'family', 'fantasy', 'history', 'horror', 'mystery', 'romance', 'science-fiction', 'thriller', 'all']
-
-genres = ['fantasy', 'history', 'horror', 'mystery', 'romance', 'science-fiction', 'thriller', 'all']
-
+genres = ['action-and-adventure', 'animation', 'anime', 'biography', 'children', 'comedy', 'crime', 'cult', 'documentary', 'drama', 'family', 'fantasy', 'history', 'horror', 'mystery', 'romance', 'science-fiction', 'thriller', 'all']
 
 def get_titles(genre, amount=100):
 
@@ -123,8 +120,19 @@ def get_all(genres, amount=100):
         get_genre(genre, amount)
         print(genre + ' - Added ({}/{})'.format(index+1, len(genres)))
 
+def get_genre_data(genre):
+    with open('genres/' + genre + '.txt') as file:
+        result = json.load(file)
+
+    return result
+
+def get_all_genre_data(genres):
+    genre_list = []
+    for genre in genres:
+        genre_list.append(get_genre_data(genre))
+    return genre_list
+
 def randomize(genre):
-    result = []
     with open('genres/' + genre + '.txt') as file:
         result = json.load(file)
 
